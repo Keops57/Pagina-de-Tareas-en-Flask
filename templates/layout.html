@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Mi App</title>
+    <!--Esa doble llave es para indicarle al html que ahi va codigo python y flask lo va a reconocer-->
+    <link rel="stylesheet" href="{{url_for('static',filename = 'style.css')}}">
+</head>
+<body>
+    <!--Esto es para indicar lo que va a cambiar en los diferentes html-->
+    {% block body%}
+    {% endblock%}
+</body>
+</html>

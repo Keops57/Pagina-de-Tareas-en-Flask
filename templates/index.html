@@ -1,0 +1,82 @@
+{% extends 'layout.html'%}
+
+{% block body%}
+
+<header>
+    <h1 class="title">To-do App para todas tus tareas >:D</h1>
+</header>
+
+<section class="container">
+
+    <h2 class="subtitle">Agregar una nueva tarea!</h2>
+<!-- Cuando se coloca un action en el form y se le coloca un url, al darle al boton, se agregara en el url la ruta indicada -->
+
+    <form action="{{url_for('agregar')}}" method = "POST">
+
+<!-- Esto se hace para poder manipular el como la aplicacion actuara en determinada accion -->
+
+        <input type="text" name="tarea">
+
+<!-- Al agregarle un name al input, identifica la info que se envia a traves del input -->
+<!-- Informacion que luego usaremos en el app -->
+
+
+        <button type="submit">Agregar</button>
+
+
+<!-- El form se termina de activar cuando se selecciona/ presiona el type = submit -->
+<!-- Luego lo guarda, solo que en este caso no es en una base de datos, si no, que en la propia pagina -->
+    </form>
+
+</section>  
+
+<!-- Lista de Pendientes -->
+
+<section class="container">
+
+    <h2 class="subtitle">Lista de Tareas Pendientes</h2>
+    {% for tarea in tareas1 %}
+
+    <article class="task container">
+    <!-- Tabla -->
+        <table>
+            <!-- Filas -->
+            <tr>
+                <!-- Columnas -->
+                <td class="columna gord"></td>
+                <td class="columna gord">{{tarea}}</td>
+                <td class="columna gord">
+                    <button><a class="boton" href="/done/{{tareas1.index(tarea)}}">Done</a></button>
+                </td>
+            </tr>
+        </table>
+    </article>
+
+    {%endfor%}
+
+</section>
+
+<!-- Lista de Terminadas -->
+
+<section class="container">
+
+    <h2 class="subtitle">Lista de Tareas Terminadas</h2>
+    {% for tarea in tareas2 %}
+
+    <article class="tasklista container">
+    <!-- Tabla -->
+        <table>
+            <!-- Filas -->
+            <tr>
+                <!-- Columnas -->
+                <td class="columna gord"></td>
+                <td class="columna gord">{{tarea}}</td>
+                <td class="columna gord"></td>
+            </tr>
+        </table>
+    </article>
+
+    {%endfor%}
+</section>
+
+{% endblock%}
